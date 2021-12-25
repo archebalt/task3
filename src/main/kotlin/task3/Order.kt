@@ -1,11 +1,17 @@
 package task3
 
-import countDeliveryCost
+
 
 data class Order(val deliveryMethod:DeliveryMethod,val itemEntry: ItemEntry, val totalDiscount: Double)
 {
     fun getTotalPrice(): Double
     {
-        return (countDeliveryCost(deliveryMethod) + itemEntry.item.price * itemEntry.amount) * ((100 - totalDiscount) * 0.01)
+        val deliveryCost: Double = when(deliveryMethod) {
+            is DeliveryMethod.CourierDelivery -> deliveryMethod.cost
+            DeliveryMethod.SelfPickup -> 0.0
+        }
+        val itemCost = itemEntry.item.price * itemEntry.amount
+        val withDiscount = ((100 - totalDiscount) * 0.01)
+        return (deliveryCost + itemCost) * withDiscount
     }
 }
