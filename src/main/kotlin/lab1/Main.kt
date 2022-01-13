@@ -31,3 +31,4 @@ fun main() {
     println(alignText(str , 27 , Alignment.WIDTH))
 
 }
+
