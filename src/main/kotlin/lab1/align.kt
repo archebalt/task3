@@ -53,36 +53,29 @@ fun createWidthAlignString(withoutSpaces : MutableList<String> , lineWidth : Int
     return res
 }
 
-fun createCenterAlignString(requiredStringWidth:String, lineWidth: Int) :String
-{
+fun createCenterAlignString(requiredStringWidth : String , lineWidth : Int) : String {
     var centerAlign = ""
     var i = 0
-    while(i != requiredStringWidth.length)
-    {
+    while (i != requiredStringWidth.length) {
         var countSymbolsEachString = 0
         var supi = i
-        while(requiredStringWidth[i] != '\n' && i < requiredStringWidth.length - 1)
-        {
-            if(requiredStringWidth[i] != ' ')
+        while (requiredStringWidth[i] != '\n' && i < requiredStringWidth.length - 1) {
+            if (requiredStringWidth[i] != ' ')
                 countSymbolsEachString++
-            else if(requiredStringWidth[i+1] != '\n')
+            else if (requiredStringWidth[i + 1] != '\n')
                 countSymbolsEachString++
             i++
-            if(i == requiredStringWidth.length)
+            if (i == requiredStringWidth.length)
                 break
         }
         val leftSpace = (lineWidth - countSymbolsEachString) / 2
         val rightSpace = (lineWidth - countSymbolsEachString) - leftSpace
-        for(n in 0 until lineWidth)
-        {
-            if(n < leftSpace )
+        for (n in 0 until lineWidth) {
+            if (n < leftSpace)
                 centerAlign += " "
-            else if(n >= (lineWidth - rightSpace))
-            {
+            else if (n >= (lineWidth - rightSpace)) {
                 centerAlign += " "
-            }
-            else
-            {
+            } else {
                 centerAlign += requiredStringWidth[supi]
                 supi++
             }
@@ -93,29 +86,25 @@ fun createCenterAlignString(requiredStringWidth:String, lineWidth: Int) :String
     return centerAlign
 }
 
-fun createRightAlignString(requiredStringWidth:String, lineWidth: Int) :String
-{
+fun createRightAlignString(requiredStringWidth : String , lineWidth : Int) : String {
     var rightAlign = ""
     var i = 0
-    while(i != requiredStringWidth.length)
-    {
+    while (i != requiredStringWidth.length) {
         var countSymbolsEachString = 0
         var supi = i
-        while(requiredStringWidth[i] != '\n' && i < requiredStringWidth.length - 1)
-        {
-            if(requiredStringWidth[i] != ' ')
+        while (requiredStringWidth[i] != '\n' && i < requiredStringWidth.length - 1) {
+            if (requiredStringWidth[i] != ' ')
                 countSymbolsEachString++
-            else if(requiredStringWidth[i+1] != '\n')
+            else if (requiredStringWidth[i + 1] != '\n')
                 countSymbolsEachString++
             i++
-            if(i == requiredStringWidth.length)
+            if (i == requiredStringWidth.length)
                 break
         }
-        for(n in 0 until lineWidth)
-        {
-            if(n < (lineWidth - countSymbolsEachString)) rightAlign += " "
-            else
-            { rightAlign += requiredStringWidth[supi]
+        for (n in 0 until lineWidth) {
+            if (n < (lineWidth - countSymbolsEachString)) rightAlign += " "
+            else {
+                rightAlign += requiredStringWidth[supi]
                 supi++
             }
         }
@@ -149,14 +138,12 @@ fun alignText(
         alignStr = createWidthAlignString(withoutSpaces , lineWidth)
     }
 
-    if(alignment == Alignment.RIGHT)
-    {
-        alignStr = createRightAlignString(requiredStringWidth,lineWidth)
+    if (alignment == Alignment.RIGHT) {
+        alignStr = createRightAlignString(requiredStringWidth , lineWidth)
     }
 
-    if(alignment == Alignment.CENTER)
-    {
-        alignStr = createCenterAlignString(requiredStringWidth,lineWidth)
+    if (alignment == Alignment.CENTER) {
+        alignStr = createCenterAlignString(requiredStringWidth , lineWidth)
     }
 
     return alignStr

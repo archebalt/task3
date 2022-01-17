@@ -28,7 +28,7 @@ fun main() {
 Предками данная мудрость народная!
 Славься, страна! Мы гордимся тобой!
         """
-    println(alignText(str , 27 , Alignment.WIDTH))
+    println(alignText(str , 27 , Alignment.CENTER))
 
 }
 
