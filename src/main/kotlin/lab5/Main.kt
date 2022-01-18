@@ -26,4 +26,15 @@ fun main() {
 
     println("3. All books = ${library1.getAllBookStatuses()}")
 
+    library1.takeBook(user2 , book1)
+    println("4. All books = ${library1.getAllBookStatuses()}")
+
+    val user4 = User("Stepan" , "Suslov")
+    library1.registerUser(user4)
+    library1.takeBook(user4 , book2)
+    println("5. All books = ${library1.getAllBookStatuses()}")
+
+    library1.unregisterUser(user4) // book2 will be available again
+    println("6. All books = ${library1.getAllBookStatuses()}")
+
 }

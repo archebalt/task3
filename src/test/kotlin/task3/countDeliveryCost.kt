@@ -10,13 +10,7 @@ internal class countDeliveryCost
     fun countDeliveryCostTest()
     {
         val Delivery = DeliveryMethod.CourierDelivery("home",1000.0)
-        assertEquals(1000,Delivery)
+        assertEquals(1000.0,Delivery.cost)
     }
 
-    @Test
-    fun countDeliveryCostTest2()
-    {
-        val Delivery = DeliveryMethod.SelfPickup
-        assertEquals(0,Delivery)
-    }
 }
