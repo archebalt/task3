@@ -80,7 +80,7 @@ class Matrix(var table : Array<Array<Double>>) {
     }
 
     fun ToString() : String {
-        var resultat : String = ""
+        var resultat = ""
         for (i in 1..a) {
             for (j in 1..b) {
                 resultat += table[i - 1][j - 1].toString() + "\t"
