@@ -34,10 +34,16 @@ interface LibraryService {
     fun addBook(book : Book , status : Status = Status.Available)
 
     fun registerUser(user : User)
+    fun unregisterUser(user : User)
+
+    fun takeBook(user : User , book : Book)
     fun returnBook(book : Book)
+
+    fun sendToRestoration(book : Book)
+    fun comingSoon(book : Book)
 }
 
-
+const val maxNumOfBooks = 3
 
 class Library(books : Mapof<Book , Status> , users : List<User>) : LibraryService {
     private var libraryBooks = mutableMapOf<Book , Status>()
@@ -98,5 +104,40 @@ class Library(books : Mapof<Book , Status> , users : List<User>) : LibraryServic
 
     override fun returnBook(book : Book) {
         libraryBooks[book] = Status.Available
+    }
+
+    override fun takeBook(user : User , book : Book) {
+        if (libraryBooks.keys.contains(book) && libraryUsers.contains(user)) {
+            if (libraryBooks.filter { book -> book.value == Status.UsedBy(user) }.size < maxNumOfBooks && libraryBooks[book] == Status.Available) {
+                libraryBooks[book] = Status.UsedBy(user)
+            } else
+                throw Exception("user has on his hands 3 or more books or book isn't available")
+        } else
+            throw Exception("there is no book or user")
+
+    }
+
+    override fun unregisterUser(user : User) {
+        if (!libraryUsers.contains(user))
+            throw Exception("there is no such user")
+        for (el in libraryBooks)
+            if (el.value == Status.UsedBy(user))
+                libraryBooks[el.key] = Status.Available
+        libraryUsers.remove(user)
+
+    }
+
+    override fun sendToRestoration(book : Book) {
+        if (libraryBooks.keys.contains(book)) {
+            if (libraryBooks[book] == Status.Available)
+                libraryBooks[book] = Status.Restoration
+            else
+                throw Exception("book isn't available")
+        } else
+            throw Exception("there is no book")
+    }
+
+    override fun comingSoon(book : Book) {
+        libraryBooks[book] = Status.ComingSoon
     }
 }
