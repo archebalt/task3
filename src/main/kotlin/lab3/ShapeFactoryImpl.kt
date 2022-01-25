@@ -37,10 +37,20 @@ class ShapeFactoryImpl(): ShapeFactory
         return Rectangle(a,b)
     }
 
+    private fun conditionTriangle(a: Double, b: Double, c: Double): Boolean {
+        return a+b>c && c+b>a && c+a>b
+    }
+
     override fun createRandomTriangle(): Triangle {
-        val a = Random.nextDouble(0.1, 100.0)
-        val b = Random.nextDouble(0.1, 100.0)
-        val c = Random.nextDouble(0.1, 100.0)
+        var a: Double
+        var b: Double
+        var c: Double
+        do {
+             a = Random.nextDouble(0.1, 100.0)
+             b = Random.nextDouble(0.1, 100.0)
+             c = Random.nextDouble(0.1, a+b)
+        } while ( !conditionTriangle(a, b, c) )
+
         return Triangle(a,b,c)
     }
 

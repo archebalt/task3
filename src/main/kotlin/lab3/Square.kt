@@ -3,20 +3,20 @@ package lab3
 import kotlin.system.exitProcess
 
 
-class Square(private val a : Double) : Shape {
-    override fun calcArea() : Double {
+class Square(val a : Double) : Shape {
+
+    init {
         if (a < 0) {
-            println("error")
-            exitProcess(400)
+            throw IllegalArgumentException("Data entered incorrectly")
         }
+    }
+
+    override fun calcArea() : Double {
+
         return a * a
     }
 
     override fun calcPerimeter() : Double {
-        if (a < 0) {
-            println("error")
-            exitProcess(400)
-        }
         return a * 4
     }
 }

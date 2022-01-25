@@ -6,6 +6,7 @@ fun main() {
     var SumArea = 0.0
     var maxArea = 0.0
     var maxPerimeter = 0.0
+
     val ShapeArray = arrayOf(
         ShapeObject.createRandomCircle() ,
         ShapeObject.createRandomSquare() ,
