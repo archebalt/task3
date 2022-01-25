@@ -29,6 +29,6 @@ fun main() {
 Славься, страна! Мы гордимся тобой!
 А Б С Д
         """
-    println(alignText(str, 8, Alignment.WIDTH))
+    println(alignText(str, -1, Alignment.WIDTH))
 }
 

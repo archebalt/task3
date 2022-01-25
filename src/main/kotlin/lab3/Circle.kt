@@ -3,7 +3,7 @@ package lab3
 import kotlin.math.PI
 import kotlin.system.exitProcess
 
-class Circle(val r : Double) : Shape {
+class Circle(val r: Double) : Shape {
 
     init {
         if (r <= 0) {
@@ -11,12 +11,12 @@ class Circle(val r : Double) : Shape {
         }
     }
 
-    override fun calcArea() : Double {
+    override fun calcArea(): Double {
 
         return r * r * PI
     }
 
-    override fun calcPerimeter() : Double {
+    override fun calcPerimeter(): Double {
         if (r < 0) {
             throw Exception()
         }

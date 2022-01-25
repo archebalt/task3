@@ -153,7 +153,7 @@ fun alignText(
     alignment: Alignment = Alignment.LEFT
 ): String {
     if (lineWidth < 1)
-        throw Exception("длина меньше 1")
+        throw IllegalArgumentException("длина меньше 1")
     val strElements = text.split(" ", "\n")
     val withoutSpaces: MutableList<String> = mutableListOf()
     for (i in 0 until strElements.size - 1) {

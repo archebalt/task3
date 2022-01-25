@@ -3,7 +3,7 @@ package lab3
 import kotlin.system.exitProcess
 
 
-class Square(val a : Double) : Shape {
+class Square(val a: Double) : Shape {
 
     init {
         if (a < 0) {
@@ -11,12 +11,12 @@ class Square(val a : Double) : Shape {
         }
     }
 
-    override fun calcArea() : Double {
+    override fun calcArea(): Double {
 
         return a * a
     }
 
-    override fun calcPerimeter() : Double {
+    override fun calcPerimeter(): Double {
         return a * 4
     }
 }

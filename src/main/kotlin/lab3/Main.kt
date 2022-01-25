@@ -8,10 +8,10 @@ fun main() {
     var maxPerimeter = 0.0
 
     val ShapeArray = arrayOf(
-        ShapeObject.createRandomCircle() ,
-        ShapeObject.createRandomSquare() ,
-        ShapeObject.createRandomRectangle() ,
-        ShapeObject.createRandomTriangle() ,
+        ShapeObject.createRandomCircle(),
+        ShapeObject.createRandomSquare(),
+        ShapeObject.createRandomRectangle(),
+        ShapeObject.createRandomTriangle(),
         ShapeObject.createRandomShape()
     )
     for (i in ShapeArray.indices) {
