@@ -17,9 +17,6 @@ class Circle(val r: Double) : Shape {
     }
 
     override fun calcPerimeter(): Double {
-        if (r < 0) {
-            throw Exception()
-        }
         return 2 * r * PI
     }
 }
