@@ -36,19 +36,14 @@ class ShapeFactoryImpl() : ShapeFactory {
         return Rectangle(a, b)
     }
 
-    private fun conditionTriangle(a: Double, b: Double, c: Double): Boolean {
-        return a + b > c && c + b > a && c + a > b
-    }
-
     override fun createRandomTriangle(): Triangle {
         var a: Double
         var b: Double
         var c: Double
-        do {
+
             a = Random.nextDouble(0.1, 100.0)
-            b = Random.nextDouble(0.1, 100.0)
-            c = Random.nextDouble(0.1, a + b)
-        } while (!conditionTriangle(a, b, c))
+            b = Random.nextDouble(0.1, a)
+            c = Random.nextDouble(a - b, a + b)
 
         return Triangle(a, b, c)
     }
