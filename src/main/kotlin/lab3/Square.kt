@@ -1,7 +1,8 @@
 package lab3
 
+import kotlinx.serialization.Serializable
 import kotlin.system.exitProcess
-
+@Serializable
 class Square(val a: Double) : Shape {
 
     init {

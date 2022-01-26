@@ -1,8 +1,9 @@
 package lab3
 
+import kotlinx.serialization.Serializable
 import kotlin.math.PI
 import kotlin.system.exitProcess
-
+@Serializable
 class Circle(val r: Double) : Shape {
 
     init {

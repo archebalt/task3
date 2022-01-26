@@ -1,7 +1,8 @@
 package lab3
 
+import kotlinx.serialization.Serializable
 import kotlin.system.exitProcess
-
+@Serializable
 class Rectangle(val a: Double, val b: Double) : Shape { /* implementation */
 
     init {

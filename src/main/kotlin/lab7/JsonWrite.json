@@ -1,0 +1,31 @@
+[
+    {
+        "type": "lab3.Triangle",
+        "a": 3.0,
+        "b": 4.0,
+        "c": 5.0
+    },
+    {
+        "type": "lab3.Circle",
+        "r": 5.0
+    },
+    {
+        "type": "lab3.Square",
+        "a": 15.0
+    },
+    {
+        "type": "lab3.Circle",
+        "r": 2.0
+    },
+    {
+        "type": "lab3.Triangle",
+        "a": 1.0,
+        "b": 1.0,
+        "c": 1.5
+    },
+    {
+        "type": "lab3.Rectangle",
+        "a": 6.0,
+        "b": 10.0
+    }
+]

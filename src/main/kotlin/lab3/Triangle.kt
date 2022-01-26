@@ -1,8 +1,9 @@
 package lab3
 
+import kotlinx.serialization.Serializable
 import kotlin.math.sqrt
 import kotlin.system.exitProcess
-
+@Serializable
 class Triangle(val a: Double, val b: Double, val c: Double) : Shape {
 
     init {
