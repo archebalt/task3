@@ -20,6 +20,7 @@ interface LibraryService {
     fun findBooks(author: Author): List<Book>
     fun findBooks(year: Int): List<Book>
     fun findBooks(genre: Genre): List<Book>
+    fun findBooks(substring: String?, author: Author?, year: Int?, genre: Genre?): List<Book>
 
     fun getAllBooks(): List<Book>
     fun getAllAvailableBooks(): List<Book>
@@ -62,6 +63,16 @@ class Library : LibraryService {
 
     override fun findBooks(year: Int): List<Book> {
         return libraryBooks.keys.filter { book -> book.year == year }.toList()
+    }
+
+    override fun findBooks(substring: String?, author: Author?, year: Int?, genre: Genre?): List<Book> {
+        return libraryBooks.keys.filter { book ->
+            (substring == null || book.title.contains(substring) &&
+                    (author == null || book.authors.contains(author)) &&
+                    (year == null || book.year == year) &&
+                    (genre == null || book.genre == genre)
+                    )
+        }.toList()
     }
 
     override fun getAllBooks(): List<Book> {

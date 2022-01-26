@@ -3,8 +3,8 @@ package lab7
 import lab3.*
 
 fun main() {
-    val AddressRead = "D:\\kotlinProjects\\kotlin5\\src\\main\\kotlin\\lab7\\JsonRead.json"
-    val AddressWrite = "D:\\kotlinProjects\\kotlin5\\src\\main\\kotlin\\lab7\\JsonWrite.json"
+    val AddressRead = "D:\\kotlinProjects\\kotlin10\\src\\main\\kotlin\\lab7\\JsonRead.json"
+    val AddressWrite = "D:\\kotlinProjects\\kotlin10\\src\\main\\kotlin\\lab7\\JsonWrite.json"
 
     val FJ = FunJSON()
     val FF = funFile()

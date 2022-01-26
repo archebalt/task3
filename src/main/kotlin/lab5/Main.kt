@@ -8,7 +8,7 @@ fun main() {
 
     val author2 = Author("MR", "BOB")
     val list2 = mutableListOf<Author>(author2)
-    val book2 = Book("History of MR. BOB", list2, Genre.HISTORY, 0)
+    val book2 = Book("Brother", list2, Genre.HISTORY, 0)
     val user2 = User("Pavel", "2")
     val library1 = Library()
     library1.addBook(book1, Status.Available)
@@ -38,4 +38,7 @@ fun main() {
 
     library1.unregisterUser(user4) // book2 will be available again
     println("6. All books = ${library1.getAllBookStatuses()}")
+
+    val findBooks3 = library1.findBooks("Bro", null, null, Genre.HISTORY)
+    println("7. findBooks - $findBooks3")
 }
