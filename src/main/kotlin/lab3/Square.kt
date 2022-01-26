@@ -2,7 +2,6 @@ package lab3
 
 import kotlin.system.exitProcess
 
-
 class Square(val a: Double) : Shape {
 
     init {

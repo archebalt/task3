@@ -1,36 +1,58 @@
 package lab4
 
-class Matrix(var table : Array<Array<Double>>) {
-    var a = table.size
-    var b = table[0].size
+class Matrix(arr : Array<Array<Double>>) {
+    private var a : Int
+    private var b : Int
+    private var table : Array<Array<Double>>
 
-    operator fun plus(other : Matrix) : Matrix {
-        for (i in 1..a) {
-            for (j in 1..b) {
-                other.table[i - 1][j - 1] += table[i - 1][j - 1]
+    init {
+        table = arr
+        a = table.size
+        if (table.isNotEmpty()) {
+            b = table[0].size
+            for (i in 1 until a-1) {
+                if (table[i].size != b) {
+                    throw IllegalArgumentException("Data entered incorrectly")
+                }
             }
         }
-        return Matrix(other.table)
+        else
+            throw IllegalArgumentException("Data entered incorrectly")
+    }
+
+    operator fun plus(other : Matrix) : Matrix {
+        compare(other)
+        val result : Array<Array<Double>> =  Array(a) { Array(b) {0.0} }
+        for (i in 1..a) {
+            for (j in 1..b) {
+                result[i-1][j-1] = table[i - 1][j - 1] + other[i - 1, j - 1]
+            }
+        }
+        return Matrix(result)
     }
 
     operator fun plusAssign(other : Matrix) {
+        compare(other)
         for (i in 1..a) {
             for (j in 1..b) {
-                table[i - 1][j - 1] = table[i - 1][j - 1] + other.table[i - 1][j - 1]
+                table[i - 1][j - 1] = table[i - 1][j - 1] + other[i - 1,j - 1]
             }
         }
     }
 
     operator fun minus(other : Matrix) : Matrix {
+        compare(other)
+        val result : Array<Array<Double>> =  Array(a) { Array(b) {0.0} }
         for (i in 1..a) {
             for (j in 1..b) {
-                other.table[i - 1][j - 1] -= table[i - 1][j - 1]
+                result[i-1][j-1] = table[i - 1][j - 1] -  other.table[i - 1][j - 1]
             }
         }
         return Matrix(other.table)
     }
 
     operator fun minusAssign(other : Matrix) {
+        compare(other)
         for (i in 1..a) {
             for (j in 1..b) {
                 table[i - 1][j - 1] = table[i - 1][j - 1] - other.table[i - 1][j - 1]
@@ -38,7 +60,7 @@ class Matrix(var table : Array<Array<Double>>) {
         }
     }
 
-    fun times(other : Matrix) : Matrix {
+    operator fun times(other : Matrix) : Matrix {
         val resul : Array<Array<Double>> = Array(a) { Array(other.a) { 0.0 } }
         for (i in 1..a) {
             for (j in 1..b) {
@@ -50,7 +72,7 @@ class Matrix(var table : Array<Array<Double>>) {
         return Matrix(resul)
     }
 
-    fun timesAssign(other : Matrix) {
+    operator fun timesAssign(other : Matrix) {
         val resul : Array<Array<Double>> = Array(a) { Array(other.b) { 0.0 } }
         for (i in 1..a) {
             for (j in 1..other.b) {
@@ -64,33 +86,7 @@ class Matrix(var table : Array<Array<Double>>) {
         b = table[0].size
     }
 
-    fun is_comparison(other : Matrix) : Boolean {
-        var comparison = true
-        if (a == other.a && b == other.b)
-            for (i in 1..a) {
-                for (j in 1..b) {
-                    if (other.table[i - 1][j - 1] != table[i - 1][j - 1])
-                        comparison = false
-                }
-            }
-        else {
-            comparison = false
-        }
-        return comparison
-    }
-
-    fun ToString() : String {
-        var resultat = ""
-        for (i in 1..a) {
-            for (j in 1..b) {
-                resultat += table[i - 1][j - 1].toString() + "\t"
-            }
-            resultat += "\n"
-        }
-        return resultat
-    }
-
-    fun timesScalar(value : Double) : Matrix {
+    operator fun times(value : Double) : Matrix {
         val resul : Array<Array<Double>> = Array(a) { Array(b) { 0.0 } }
         for (i in 1..a) {
             for (j in 1..b) {
@@ -101,7 +97,16 @@ class Matrix(var table : Array<Array<Double>>) {
         return Matrix(resul)
     }
 
-    fun div(value : Double) : Matrix {
+    operator fun timesAssign(value : Double){
+        for (i in 1..a) {
+            for (j in 1..b) {
+                table[i - 1][j - 1] = table[i - 1][j - 1] * value
+
+            }
+        }
+    }
+
+    operator fun div(value : Double) : Matrix {
         val resul : Array<Array<Double>> = Array(a) { Array(b) { 0.0 } }
         for (i in 1..a) {
             for (j in 1..b) {
@@ -112,7 +117,7 @@ class Matrix(var table : Array<Array<Double>>) {
         return Matrix(resul)
     }
 
-    fun divAssign(value : Double) {
+    operator fun divAssign(value : Double) {
         for (i in 1..a) {
             for (j in 1..b) {
                 table[i - 1][j - 1] /= value
@@ -149,6 +154,48 @@ class Matrix(var table : Array<Array<Double>>) {
 
     operator fun unaryPlus() : Matrix {
         return this
+    }
+
+    private fun compare(matr: Matrix)
+    {
+        if (matr.getSizeColumns() != b || matr.getSizeRows() != a)
+            throw IllegalArgumentException("Data entered incorrectly")
+    }
+
+    override fun toString(): String {
+        var resultat = ""
+        for (i in 1..a) {
+            for (j in 1..b) {
+                resultat += table[i - 1][j - 1].toString() + "\t"
+            }
+            resultat += "\n"
+        }
+        return resultat
+    }
+
+    override operator fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Matrix
+
+        if (a != other.a) return false
+        if (b != other.b) return false
+        for (i in 1..a) {
+            for (j in 1..b) {
+                if (other[i - 1,j - 1] != table[i - 1][j - 1])
+                    return false
+            }
+        }
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = a
+        result = 31 * result + b
+        result = 31 * result + table.contentDeepHashCode()
+        return result
     }
 
 
