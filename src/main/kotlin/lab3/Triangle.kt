@@ -2,23 +2,23 @@ package lab3
 
 import kotlinx.serialization.Serializable
 import kotlin.math.sqrt
-import kotlin.system.exitProcess
+
 @Serializable
-class Triangle(val a: Double, val b: Double, val c: Double) : Shape {
+class Triangle(val sideA: Double, val sideB: Double, val sideC: Double) : Shape {
 
     init {
-        if (a <= 0 || b <= 0 || c <= 0 && !(a + b > c && c + b > a && c + a > b)) {
+        if (sideA <= 0 || sideB <= 0 || sideC <= 0 || sideA + sideB <= sideC || sideC + sideB <= sideA || sideC + sideA <= sideB) {
             throw IllegalArgumentException("Data entered incorrectly")
         }
     }
 
     override fun calcArea(): Double {
-        val perimeter = (a + b + c) / 2
-        val area = perimeter * (perimeter - a) * (perimeter - b) * (perimeter - c)
+        val perimeter = (sideA + sideB + sideC) / 2
+        val area = perimeter * (perimeter - sideA) * (perimeter - sideB) * (perimeter - sideC)
         return sqrt(area)
     }
 
     override fun calcPerimeter(): Double {
-        return a + b + c
+        return sideA + sideB + sideC
     }
 }

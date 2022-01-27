@@ -3,6 +3,7 @@ package lab3
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import kotlin.math.PI
+import kotlin.test.assertFails
 
 internal class RectangleTest
 {
@@ -15,6 +16,18 @@ internal class RectangleTest
         } catch (e: Exception) {
             fail()
         }
+    }
+
+    @Test
+    fun CreateRectangle2() {
+        val Test = ShapeFactoryImpl()
+        assertFails { Test.createRectangle(-7.0, 6.0) }
+    }
+
+    @Test
+    fun CreateRectangle3() {
+        val Test = ShapeFactoryImpl()
+        assertFails { Test.createRectangle(-7.0, -6.0) }
     }
 
     @Test
@@ -31,14 +44,14 @@ internal class RectangleTest
     @Test
     fun testArae()
     {
-        var R = Rectangle(7.0,6.0)
+        val R = Rectangle(7.0,6.0)
         assertEquals(42.0, R.calcArea())
     }
 
     @Test
     fun testPerimeter()
     {
-        var R = Rectangle(7.0,6.0)
+        val R = Rectangle(7.0,6.0)
         assertEquals(26.0, R.calcPerimeter())
     }
 }

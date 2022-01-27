@@ -39,12 +39,12 @@ fun main() {
     println()
     println("радиус по возрастанию:")
     for (sh in circleCollector.getAllSorted(ShapeComporators.radiusIncrease)) {
-        print("${sh.r} |")
+        print("${sh.radius} |")
     }
     println()
     println("радиус по убыванию:")
     for (sh in circleCollector.getAllSorted(ShapeComporators.radiusDescending)) {
-        print("${sh.r} |")
+        print("${sh.radius} |")
     }
     println()
     for(sh in shapeCollector.getAllByClass(Square::class.java))

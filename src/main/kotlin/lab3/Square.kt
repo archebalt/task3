@@ -1,22 +1,21 @@
 package lab3
 
 import kotlinx.serialization.Serializable
-import kotlin.system.exitProcess
+
 @Serializable
-class Square(val a: Double) : Shape {
+class Square(val sideA: Double) : Shape {
 
     init {
-        if (a < 0) {
+        if (sideA < 0) {
             throw IllegalArgumentException("Data entered incorrectly")
         }
     }
 
     override fun calcArea(): Double {
-
-        return a * a
+        return sideA * sideA
     }
 
     override fun calcPerimeter(): Double {
-        return a * 4
+        return sideA * 4
     }
 }

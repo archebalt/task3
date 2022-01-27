@@ -5,7 +5,7 @@ import lab3.*
 import kotlinx.serialization.modules.*
 import kotlinx.serialization.json.Json
 
-class FunJSON {
+class SerializersModule {
     private val json = Json {
         prettyPrint = true
 

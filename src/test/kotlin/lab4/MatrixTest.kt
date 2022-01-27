@@ -2,12 +2,13 @@ package lab4
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import kotlin.test.assertFails
 
 internal class MatrixTest()
 {
 
     @Test
-    fun testA()
+    fun testEquals()
     {
         val resul: Array<Array<Double>> = Array(3) { Array(4) { 0.0 } }
         val m = Matrix(resul)
@@ -16,7 +17,7 @@ internal class MatrixTest()
     }
 
     @Test
-    fun testB()
+    fun testPlus()
     {
         val resul: Array<Array<Double>> = Array(3) { Array(4) { 1.0 } }
         val resul2: Array<Array<Double>> = Array(3) { Array(4) { 3.0 } }
@@ -36,7 +37,7 @@ internal class MatrixTest()
     }
 
     @Test
-    fun testC()
+    fun testMinus()
     {
         val resul: Array<Array<Double>> = Array(3) { Array(4) { 1.0 } }
         val resul2: Array<Array<Double>> = Array(3) { Array(4) { 3.0 } }
@@ -56,7 +57,7 @@ internal class MatrixTest()
     }
 
     @Test
-    fun testD()
+    fun testTimes()
     {
         val resul: Array<Array<Double>> = Array(3) { Array(3) { 3.0 } }
         val resul2: Array<Array<Double>> = Array(3) { Array(1) { 11.0 } }
@@ -74,16 +75,16 @@ internal class MatrixTest()
     }
 
     @Test
-    fun testE() {
+    fun testString() {
         val resul: Array<Array<Double>> = Array(2) { Array(2) { 3.0 } }
-        val m : Matrix = Matrix(resul)
-        val a : Double = 3.0
+        val m = Matrix(resul)
+        val a = 3.0
         val str = a.toString() + "\t" + a.toString() + "\t" + "\n" + a.toString() + "\t" + a.toString() + "\t" + "\n"
         assertEquals(str, m.toString())
     }
 
     @Test
-    fun testF()
+    fun testDiv()
     {
 
         val resul: Array<Array<Double>> = Array(3) { Array(4) { 3.0 } }
@@ -102,7 +103,7 @@ internal class MatrixTest()
     }
 
     @Test
-    fun testG()
+    fun testTimesAssign()
     {
 
         val resul: Array<Array<Double>> = Array(3) { Array(4) { 3.0 } }
@@ -120,5 +121,19 @@ internal class MatrixTest()
         assertEquals(true, comparison)
     }
 
+    @Test
+    fun testCreate() {
+        val resul = arrayOf(arrayOf(1.0,2.0,3.0), arrayOf(1.0,2.0))
+        assertFails { Matrix(resul) }
+    }
 
+    @Test
+    fun testNewTimes() {
+        val resul : Array<Array<Double>> = Array(3) { Array(3) { 3.0 } }
+        val resul2 : Array<Array<Double>> = Array(3) { Array(1) { 11.0 } }
+        val m1 = Matrix(resul)
+        val ma = Matrix(resul2)
+
+        assertFails { ma.timesAssign(m1) }
+    }
 }

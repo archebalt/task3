@@ -1,7 +1,7 @@
 package lab3
 
 interface ShapeFactory {
-    fun createCircle(r: Double): Circle
+    fun createCircle(radius: Double): Circle
     fun createSquare(a: Double): Square
     fun createRectangle(a: Double, b: Double): Rectangle
     fun createTriangle(a: Double, b: Double, c: Double): Triangle

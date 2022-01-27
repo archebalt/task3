@@ -3,6 +3,7 @@ package lab3
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import kotlin.math.PI
+import kotlin.test.assertFails
 
 internal class CircleTest
 {
@@ -10,24 +11,32 @@ internal class CircleTest
     fun CreateCircle()
     {
         try {
-            val Test = ShapeFactoryImpl()
-            Test.createCircle(10.0)
+            val test = ShapeFactoryImpl()
+            test.createCircle(10.0)
         } catch (e: Exception) {
             fail()
         }
     }
 
     @Test
-    fun testArae()
+    fun CreateCircle2() {
+        val Test = ShapeFactoryImpl()
+        assertFails { Test.createCircle(-10.0)}
+    }
+
+
+
+    @Test
+    fun testArea()
     {
-        var C = Circle(7.0)
-        assertEquals(7*7* PI, C.calcArea())
+        val c = Circle(7.0)
+        assertEquals(7*7* PI, c.calcArea())
     }
 
     @Test
     fun testPerimeter()
     {
-        var C = Circle(7.0)
-        assertEquals(2*7*PI, C.calcPerimeter())
+        val c = Circle(7.0)
+        assertEquals(2*7*PI, c.calcPerimeter())
     }
 }
