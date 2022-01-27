@@ -47,8 +47,7 @@ fun main() {
         print("${sh.radius} |")
     }
     println()
-    for(sh in shapeCollector.getAllByClass(Square::class.java))
-    {
+    for (sh in shapeCollector.getAllByClass(Square::class.java)) {
         println("$sh - ${sh.calcPerimeter()}")
     }
 
