@@ -5,11 +5,9 @@ import org.junit.jupiter.api.Test
 import kotlin.math.PI
 import kotlin.test.assertFails
 
-internal class CircleTest
-{
+internal class CircleTest {
     @Test
-    fun CreateCircle()
-    {
+    fun CreateCircle() {
         try {
             val test = ShapeFactoryImpl()
             test.createCircle(10.0)
@@ -21,22 +19,19 @@ internal class CircleTest
     @Test
     fun CreateCircle2() {
         val Test = ShapeFactoryImpl()
-        assertFails { Test.createCircle(-10.0)}
+        assertFails { Test.createCircle(-10.0) }
     }
 
 
-
     @Test
-    fun testArea()
-    {
+    fun testArea() {
         val c = Circle(7.0)
-        assertEquals(7*7* PI, c.calcArea())
+        assertEquals(7 * 7 * PI, c.calcArea())
     }
 
     @Test
-    fun testPerimeter()
-    {
+    fun testPerimeter() {
         val c = Circle(7.0)
-        assertEquals(2*7*PI, c.calcPerimeter())
+        assertEquals(2 * 7 * PI, c.calcPerimeter())
     }
 }
