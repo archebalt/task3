@@ -30,6 +30,6 @@ object ShapeComporators {
     val calcPerimeterDescending = compareByDescending<Shape> { it.calcPerimeter() }
     val calcAreaIncrease = compareBy<Shape> { it.calcArea() }
     val calcAreaDescending = compareByDescending<Shape> { it.calcArea() }
-    val radiusIncrease = compareBy<Circle> { it.r }
-    val radiusDescending = compareByDescending<Circle> { it.r }
+    val radiusIncrease = compareBy<Circle> { it.radius }
+    val radiusDescending = compareByDescending<Circle> { it.radius }
 }

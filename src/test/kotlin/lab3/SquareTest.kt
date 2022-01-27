@@ -2,6 +2,7 @@ package lab3
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import kotlin.test.assertFails
 
 internal class SquareTest
 {
@@ -14,6 +15,12 @@ internal class SquareTest
         } catch (e: Exception) {
             fail()
         }
+    }
+
+    @Test
+    fun CreateSquare2() {
+        val Test = ShapeFactoryImpl()
+        assertFails { Test.createSquare(-7.0) }
     }
 
     @Test
@@ -30,14 +37,14 @@ internal class SquareTest
     @Test
     fun testArae()
     {
-        var S = Square(7.0)
+        val S = Square(7.0)
         assertEquals(49.0, S.calcArea())
     }
 
     @Test
     fun testPerimeter()
     {
-        var S = Square(7.0)
+        val S = Square(7.0)
         assertEquals(28.0, S.calcPerimeter())
     }
 }

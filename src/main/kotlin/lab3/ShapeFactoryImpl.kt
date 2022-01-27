@@ -1,60 +1,55 @@
 package lab3
 
 import kotlin.random.Random
-import kotlin.system.exitProcess
 
-class ShapeFactoryImpl() : ShapeFactory {
-    override fun createCircle(r: Double): Circle {
-        return Circle(r)
+class ShapeFactoryImpl : ShapeFactory {
+    override fun createCircle(radius: Double): Circle {
+        return Circle(radius)
     }
 
-    override fun createSquare(a: Double): Square {
-        return Square(a)
+    override fun createSquare(sideA: Double): Square {
+        return Square(sideA)
     }
 
-    override fun createRectangle(a: Double, b: Double): Rectangle {
-        return Rectangle(a, b)
+    override fun createRectangle(sideA: Double, sideB: Double): Rectangle {
+        return Rectangle(sideA, sideB)
     }
 
-    override fun createTriangle(a: Double, b: Double, c: Double): Triangle {
-        return Triangle(a, b, c)
+    override fun createTriangle(sideA: Double, sideB: Double, sideC: Double): Triangle {
+        return Triangle(sideA, sideB, sideC)
     }
 
     override fun createRandomCircle(): Circle {
-        val r = Random.nextDouble(0.1, 100.0)
-        return Circle(r)
+        val radius = Random.nextDouble(0.1, 100.0)
+        return Circle(radius)
     }
 
     override fun createRandomSquare(): Square {
-        val a = Random.nextDouble(0.1, 100.0)
-        return Square(a)
+        val sideA = Random.nextDouble(0.1, 100.0)
+        return Square(sideA)
     }
 
     override fun createRandomRectangle(): Rectangle {
-        val a = Random.nextDouble(0.1, 100.0)
-        val b = Random.nextDouble(0.1, 100.0)
-        return Rectangle(a, b)
+        val sideA = Random.nextDouble(0.1, 100.0)
+        val sideB = Random.nextDouble(0.1, 100.0)
+        return Rectangle(sideA, sideB)
     }
 
     override fun createRandomTriangle(): Triangle {
-        var a: Double
-        var b: Double
-        var c: Double
 
-            a = Random.nextDouble(0.1, 100.0)
-            b = Random.nextDouble(0.1, a)
-            c = Random.nextDouble(a - b, a + b)
+        val sideA: Double = Random.nextDouble(0.1, 100.0)
+        val sideB: Double = Random.nextDouble(0.1, sideA)
+        val c: Double = Random.nextDouble(sideA - sideB, sideA + sideB)
 
-        return Triangle(a, b, c)
+        return Triangle(sideA, sideB, c)
     }
 
     override fun createRandomShape(): Shape {
-        val i = Random.nextInt(0, 3)
-        when (i) {
-            0 -> return createRandomCircle()
-            1 -> return createRandomSquare()
-            2 -> return createRandomRectangle()
-            else -> return createRandomTriangle()
+        return when (Random.nextInt(0, 3)) {
+            0 -> createRandomCircle()
+            1 -> createRandomSquare()
+            2 -> createRandomRectangle()
+            else -> createRandomTriangle()
         }
     }
 }

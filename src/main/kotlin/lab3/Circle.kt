@@ -2,22 +2,22 @@ package lab3
 
 import kotlinx.serialization.Serializable
 import kotlin.math.PI
-import kotlin.system.exitProcess
+
 @Serializable
-class Circle(val r: Double) : Shape {
+class Circle(val radius: Double) : Shape {
 
     init {
-        if (r <= 0) {
+        if (radius <= 0) {
             throw IllegalArgumentException("Data entered incorrectly")
         }
     }
 
     override fun calcArea(): Double {
 
-        return r * r * PI
+        return radius * radius * PI
     }
 
     override fun calcPerimeter(): Double {
-        return 2 * r * PI
+        return 2 * radius * PI
     }
 }

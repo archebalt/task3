@@ -1,31 +1,31 @@
 [
     {
         "type": "lab3.Triangle",
-        "a": 3.0,
-        "b": 4.0,
-        "c": 5.0
+        "sideA": 3.0,
+        "sideB": 4.0,
+        "sideC": 5.0
     },
     {
         "type": "lab3.Circle",
-        "r": 5.0
+        "radius": 5.0
     },
     {
         "type": "lab3.Square",
-        "a": 15.0
+        "sideA": 15.0
     },
     {
         "type": "lab3.Circle",
-        "r": 2.0
+        "radius": 2.0
     },
     {
         "type": "lab3.Triangle",
-        "a": 1.0,
-        "b": 1.0,
-        "c": 1.5
+        "sideA": 1.0,
+        "sideB": 1.0,
+        "sideC": 1.5
     },
     {
         "type": "lab3.Rectangle",
-        "a": 6.0,
-        "b": 10.0
+        "sideA": 6.0,
+        "sideB": 10.0
     }
 ]
