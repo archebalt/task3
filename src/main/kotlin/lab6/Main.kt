@@ -31,6 +31,7 @@ fun main() {
         print("${sh.calcArea()} |")
     }
     val circleCollector = ShapeCollector<Circle>()
+    circleCollector.getAllSorted(ShapeComporators.calcAreaIncrease)
     circleCollector.add(Circle(2.0))
     circleCollector.add(Circle(3.5))
     circleCollector.add(Circle(4.0))

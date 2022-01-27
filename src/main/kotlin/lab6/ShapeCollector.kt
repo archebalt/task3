@@ -1,13 +1,13 @@
 import lab3.*
 
 class ShapeCollector<T : Shape> {
-    private var shapes = mutableListOf<T>()
+    private val shapes = mutableListOf<T>()
     fun add(shape: T) {
         shapes.add(shape)
     }
 
-    fun addAll(shapesList: List<T>) {
-        shapes.addAll(shapesList)
+    fun addAll(shapesCollection: Collection<T>) {
+        shapes.addAll(shapesCollection)
     }
 
     fun getAll(): List<T> {
@@ -25,6 +25,7 @@ class ShapeCollector<T : Shape> {
 }
 
 object ShapeComporators {
+
     val calcPerimeterIncrease = compareBy<Shape> { it.calcPerimeter() }
     val calcPerimeterDescending = compareByDescending<Shape> { it.calcPerimeter() }
     val calcAreaIncrease = compareBy<Shape> { it.calcArea() }
